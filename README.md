@@ -109,13 +109,13 @@ For copyright or content concerns, please contact the project maintainer.
 
 ## ❤️ 项目初衷 · Why
 
-> «“我记得有一集……”
+> “我记得有一集……”
 
-> 从一个角色、一段剧情、一句台词，重新找到那个熟悉的故事。»
+> 从一个角色、一段剧情、一句台词，重新找到那个熟悉的故事。
 
-> «“I remember an episode…”
+> “I remember an episode…”
 
-> Start with a character, a plot, or a line — and rediscover the story you remember.»
+> Start with a character, a plot, or a line — and rediscover the story you remember.
 
 ---
 
