@@ -3,6 +3,7 @@
 ## 《七十二家房客》剧集查询 · Episode Search
 
 一个面向《七十二家房客》爱好者的剧集搜索与回忆工具。
+QQ交流群：1126888489，欢迎加入。
 
 Search and rediscover episodes, storylines, characters, and memorable moments from 72 Households.
 
