@@ -1,336 +1,133 @@
 # 72-households-search
 
-# 《七十二家房客》剧集查询
+## 《七十二家房客》剧集查询 · Episode Search
 
-一个面向《七十二家房客》爱好者的剧集查询与回忆工具。
+一个面向《七十二家房客》爱好者的剧集搜索与回忆工具。
 
-> **72 Households --- Episode Search**\
-> Search and rediscover episodes, storylines, characters, and memorable
-> plots from *72 Households*.
+Search and rediscover episodes, storylines, characters, and memorable moments from 72 Households.
 
-------------------------------------------------------------------------
+---
 
-## 📺 项目简介
+## 📺 项目简介 · About
 
-《七十二家房客》是广东本土长篇粤语情景喜剧，自 2008
-年开播以来，剧集数量庞大、季数繁多。
+《七十二家房客》自 2008 年开播以来，剧集数量庞大。很多观众只记得一个角色、一段剧情或一句台词，却想不起具体是哪一集。
 
-很多观众在多年后想重新寻找某一集时，往往只记得一个模糊的剧情、某个角色，或者一两个关键词，却记不清具体季数、集名和集号。由于缺少一个面向爱好者、方便检索的完整剧集查询工具，本项目因此而生。
+本项目将剧集资料结构化，帮助用户通过模糊记忆快速找到对应故事。
 
-本项目希望将分散的剧集信息整理成一个更容易浏览和搜索的网页工具，让观众可以通过：
+72 Households has a large number of episodes since its debut in 2008. This project organizes episode information to help users find stories through characters, plots, titles, and keywords.
 
--   季数
--   集数
--   集名
--   剧情梗概
--   角色
--   关键词
+---
 
-快速定位想找的故事，重新找回熟悉的市井记忆。
+## 📊 内容 · Content
 
-------------------------------------------------------------------------
+- 第 1–19 季 · Seasons 1–19
+- 1,552 个故事主线 · 1,552 Storylines
+- 33 位经典角色 · 33 Characters
 
-## 📺 内容
+---
 
-目前收录：
+## 🔍 搜索 · Search
 
--   **第 1--19 季**
--   **1,552 个故事主线**
--   **33 位经典角色**
+支持按以下内容查询：
 
-项目以剧集主线和分集信息为核心，方便按照不同维度进行查询和浏览。
+- 季数 · Season
+- 集数 · Episode
+- 集名 · Title
+- 剧情 · Plot
+- 角色 · Character
+- 关键词 · Keyword
 
-------------------------------------------------------------------------
+支持多条件组合搜索，即使只记得一部分剧情，也可以尝试找回对应剧集。
 
-## 🔍 查询
+Search by season, episode, title, plot, character, or keyword, with support for combined filters.
 
-支持多条件、关键词检索，包括：
+---
 
--   按季数搜索
--   按集数搜索
--   按集名搜索
--   按剧情关键词搜索
--   按角色搜索
--   按人物名字搜索
--   多条件组合筛选
+## 🎯 功能 · Features
 
-例如，可以搜索：
+- 🔎 剧集搜索 · Episode Search
+- 📚 分集目录 · Episode Directory
+- 👤 角色筛选 · Character Filter
+- 🎲 随机选集 · Random Episode
+- 🔗 相似剧情 · Similar Stories
+- ⭐ 每日推荐 · Daily Recommendations
+- 📋 想看 / 已看 · Watch Tracking
+- 📱 响应式布局 · Responsive Design
 
-> 太子炳
+---
 
-> 八姑
+## 🎨 设计 · Design
 
-> 阿香
+视觉设计灵感来自：
 
-> 徐三
+**广州西关大屋 · 岭南建筑 · 民国广州 · 旧时市井生活**
 
-> 三六九
+Inspired by Guangzhou Xiguan Mansions, Lingnan architecture, Republican-era Guangzhou, and nostalgic neighborhood life.
 
-也可以输入剧情中出现过的关键词，通过模糊记忆反向寻找对应剧集。
+希望让剧集查询不仅是一个数据库，也成为重新找回岭南市井记忆的入口。
 
-------------------------------------------------------------------------
+The goal is not just to build an episode database, but to recreate the nostalgic atmosphere of old Guangzhou.
 
-## 🎯 核心功能
+---
 
-### 1. 多条件搜索
+## 📚 数据来源 · Sources
 
-输入季数、集标题、人物名字或剧情关键词，快速筛选对应剧集。
+主要整理自：
 
-### 2. 分集目录浏览
+- 百度百科 · Baidu Baike
+- 哔哩哔哩用户 hahahhhhahha 发布的相关专栏 · Bilibili user hahahhhhahha's related articles
 
-按照季度 / 季数展开查看剧集目录，包括：
+数据经过整理和结构化，可能存在遗漏或错误，欢迎提交修正。
 
--   集号
--   上篇 / 下篇标记
--   集名
--   剧情梗概
--   主要出场人物
+Data has been organized and structured from publicly available sources. Errors or omissions may exist; corrections are welcome.
 
-### 3. 角色筛选
+---
 
-选择经典角色，快速查看相关故事，例如：
+## 🤖 AI 辅助创作 · AI-Assisted
 
--   太子炳
--   八姑
--   阿香
--   徐三
--   三六九
--   以及其他经典角色
+本项目网页由 AI 辅助创作，作者负责创意、产品设计、内容整理、筛选及最终定稿。
 
-### 4. 主线剧情
+The project was created with AI assistance, while the author handled the concept, product design, content curation, review, and final decisions.
 
-围绕故事主线整理分集内容，方便用户通过剧情回忆寻找剧集。
+---
 
-### 5. 随机选集
+## ⚠️ 版权声明 · Disclaimer
 
-不知道看什么时，可以随机推荐一集，重新体验经典故事。
+非官方项目，仅供剧集查询、个人学习与爱好者交流。
 
-### 6. 相似剧情
+This is an unofficial fan-made project for episode search, personal learning, and community use.
 
-根据当前剧集的剧情、角色和关键词，辅助发现主题或人物相近的故事。
+《七十二家房客》及相关影视作品的版权归相应权利方所有。本项目不提供原剧影视资源，也不主张拥有相关知识产权。
 
-### 7. 今日推荐
+All rights to 72 Households and related media belong to their respective rights holders. This project does not provide or claim ownership of the original media.
 
-每天随机 / 定向推荐值得回看的经典剧集。
+如有版权或内容问题，请联系项目维护者。
 
-### 8. 想看 / 已看
+For copyright or content concerns, please contact the project maintainer.
 
-支持观众记录观看状态：
+---
 
--   想看
--   已看
+## ❤️ 项目初衷 · Why
 
-方便建立自己的《七十二家房客》观看清单。
+> «“我记得有一集……”
 
-### 9. 响应式布局
+> 从一个角色、一段剧情、一句台词，重新找到那个熟悉的故事。»
 
-适配：
+> «“I remember an episode…”
 
--   📱 手机
--   💻 电脑
--   🖥️ 大屏设备
+> Start with a character, a plot, or a line — and rediscover the story you remember.»
 
-让剧集查询在不同设备上都能够正常使用。
+---
 
-------------------------------------------------------------------------
+## ⭐ 支持项目 · Support
 
-## 🎨 视觉设计
+如果项目对你有帮助，欢迎：
 
-网页整体视觉以：
+⭐ Star · 🐛 Issue · 💡 Suggestions · 🔧 Data Corrections · 📢 Share
 
-**广州西关大屋 + 岭南民国风 + 旧时市井生活**
+---
 
-为设计灵感。
+## 🔖 Tags
 
-希望通过色彩、排版、建筑元素和复古氛围，还原《七十二家房客》所代表的岭南市井情怀。
-
-设计目标不是简单制作一个"剧集数据库"，而是让查询本身也具有一种回到旧日广州街坊生活的感觉。
-
-------------------------------------------------------------------------
-
-# 72 Households --- Episode Search
-
-## 📺 Content
-
-Seasons **1--19**, featuring:
-
--   **1,552 storylines**
--   **33 iconic characters**
-
-The project organizes episode information around storylines, episode
-titles, characters, and plot summaries.
-
-## 🔍 Search
-
-Search by:
-
--   Season
--   Episode
--   Title
--   Plot
--   Character
--   Keyword
-
-Find an episode even when you only remember part of the story.
-
-## 🎯 Features
-
--   Storyline Search
--   Episode Directory
--   Character Filtering
--   Random Episodes
--   Similar Stories
--   Daily Recommendations
--   Watch Tracking
--   Responsive Layout
-
-## 🎨 Design
-
-Inspired by:
-
--   Guangzhou Xiguan Mansions
--   Lingnan architecture
--   Republican-era Guangzhou aesthetics
--   Nostalgic neighborhood life
-
-The interface aims to recreate the warm, lively atmosphere of the
-classic Lingnan community depicted in *72 Households*.
-
-------------------------------------------------------------------------
-
-## 🧭 使用场景
-
-### "我记得有一集是太子炳......"
-
-输入角色名字，即可筛选相关剧集。
-
-### "我只记得剧情，不记得是哪一集......"
-
-输入剧情关键词，通过故事梗概查找可能对应的剧集。
-
-### "我忘记是哪一季了......"
-
-可以直接浏览第 1--19 季目录，逐季寻找。
-
-### "今天不知道看哪一集......"
-
-使用随机选集或今日推荐。
-
-### "这集看完了，还有类似的吗？"
-
-使用相似剧情继续发现相关故事。
-
-------------------------------------------------------------------------
-
-## 🗂️ 数据结构
-
-项目核心数据围绕以下字段组织：
-
-  字段           说明
-  -------------- -----------------------
-  Season         季数
-  Episode        集数
-  Title          集名
-  Storyline      主线剧情
-  Characters     主要角色
-  Keywords       搜索关键词
-  Part           上篇 / 下篇等集数标记
-  Watch Status   想看 / 已看
-
-------------------------------------------------------------------------
-
-## 📚 数据来源
-
-本项目剧集资料主要整理自：
-
-1.  **百度百科**
-2.  **哔哩哔哩用户 hahahhhhahha 发布的相关专栏**
-
-数据经过整理、归纳和结构化后，用于网页查询与爱好者查阅。
-
-> 数据内容可能存在遗漏、错误或版本差异，如发现问题，欢迎提出修正建议。
-
-------------------------------------------------------------------------
-
-## 🤖 项目创作说明
-
-网页 HTML 项目由 **AI 辅助创作**。
-
-项目作者主要负责：
-
--   创意构思
--   产品方向设计
--   提示词设计
--   参数调整
--   多轮筛选
--   内容整理
--   最终定稿
-
-AI
-主要作为开发与创作辅助工具，帮助完成页面结构、交互方案、视觉设计和代码实现等工作。
-
-------------------------------------------------------------------------
-
-## ⚠️ 版权与免责声明
-
-本项目为《七十二家房客》爱好者制作的**非官方剧集查询工具**。
-
-项目中的剧集信息、角色信息、剧情相关内容，仅用于：
-
--   爱好者查阅
--   剧集检索
--   个人学习与交流
--   方便观众寻找想看的故事
-
-**《七十二家房客》相关影视作品及其完整版权归相应版权方所有。**
-
-本项目不主张拥有原剧、角色、影视画面、音视频等相关知识产权。
-
-如相关版权方、内容权利人认为项目中的任何内容侵犯其合法权益，请联系项目维护者。
-
-**如有侵权，我将立即删除相关内容。**
-
-------------------------------------------------------------------------
-
-## ❤️ 项目初衷
-
-《七十二家房客》陪伴了很多广东观众，也留下了大量具有岭南地方特色的角色、台词和故事。
-
-做这个项目，并不是为了重新制作这部作品，而是希望：
-
-> **让那些记得一个角色、一个剧情、甚至一句台词，却想不起具体是哪一集的人，能够重新找到那个故事。**
-
-从"我记得有一集......"开始，重新找到属于自己的七十二家房客。
-
-------------------------------------------------------------------------
-
-## ⭐ 欢迎支持
-
-如果这个项目帮助你找回了一集曾经喜欢的故事，欢迎：
-
--   ⭐ Star 本项目
--   🐛 提交 Issue
--   💡 提交改进建议
--   🔧 提交数据修正
--   📢 分享给喜欢《七十二家房客》的朋友
-
-------------------------------------------------------------------------
-
-## 🔖 项目标签
-
-`七十二家房客` `72-households` `episode-search` `粤语情景喜剧`
-`广东电视剧` `广州` `岭南文化` `西关` `剧集查询` `分集剧情` `角色查询`
-
-------------------------------------------------------------------------
-
-## 📌 项目声明
-
-**非官方项目｜仅供爱好者查阅**
-
-数据来源：百度百科、哔哩哔哩相关专栏等公开资料。
-
-如有侵权，请联系维护者删除。
-
-**广东广播电视台及相关权利方享有本剧完整版权。**
-
-#七十二家房客
+"七十二家房客" "72-households" "episode-search" "粤语情景喜剧"  
+"广东电视剧" "广州" "岭南文化" "西关" "Episode Search"
