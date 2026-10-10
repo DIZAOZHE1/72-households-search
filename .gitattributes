@@ -3,3 +3,10 @@
 # fails when a regeneration no longer matches what is committed. Any line-ending conversion would
 # change those bytes, so the pages are explicitly excluded from text normalisation.
 android/data/sources/*.html -text
+
+# The two files above are copies of the pages published at the repository root (v2.20/), and
+# data/extracted/*.json is generated from them at build time. None of it is hand-written source, so
+# keep it out of the repository language statistics -- otherwise these ~1.8 MB of data dominate the
+# bar and make the Kotlin app look like a rounding error.
+android/data/sources/*.html linguist-vendored
+android/data/extracted/*.json linguist-generated
