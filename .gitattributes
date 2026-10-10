@@ -1,0 +1,5 @@
+# The source pages under android/data/sources are content-addressed: tools/extract_data.js and
+# tools/extract_qiershi.js record their SHA256 in android/data/extracted/provenance.json, and CI
+# fails when a regeneration no longer matches what is committed. Any line-ending conversion would
+# change those bytes, so the pages are explicitly excluded from text normalisation.
+android/data/sources/*.html -text

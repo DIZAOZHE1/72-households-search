@@ -13,6 +13,9 @@ jobs:
   build:
     name: Assemble and test
     runs-on: ubuntu-latest
+    # Attaching the APK to a release needs write access on contents; the default token is read-only.
+    permissions:
+      contents: write
     defaults:
       run:
         working-directory: android
@@ -25,22 +28,31 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install SDK packages
-        run: sdkmanager --install 'platform-tools' 'platforms;android-36' 'build-tools;36.0.0'
+      # The runner image's SDK layout changes between image releases, and its preinstalled API level
+      # may not be the one this project compiles against. Fetching the command-line tools explicitly
+      # makes the build independent of all of that, at the cost of one ~130 MB download.
+      - name: Install the Android SDK packages
+        run: |
+          CMDLINE_VERSION=13114758
+          SDK_ROOT="$RUNNER_TEMP/android-sdk"
+          mkdir -p "$SDK_ROOT/cmdline-tools"
+          curl -fsSL -o "$RUNNER_TEMP/cmdline-tools.zip" \
+            "https://dl.google.com/android/repository/commandlinetools-linux-${CMDLINE_VERSION}_latest.zip"
+          unzip -q "$RUNNER_TEMP/cmdline-tools.zip" -d "$SDK_ROOT/cmdline-tools"
+          mv "$SDK_ROOT/cmdline-tools/cmdline-tools" "$SDK_ROOT/cmdline-tools/latest"
+          echo "ANDROID_HOME=$SDK_ROOT" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK_ROOT" >> "$GITHUB_ENV"
+          echo "$SDK_ROOT/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          yes | "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
+          "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" \
+            --install 'platform-tools' 'platforms;android-36' 'build-tools;36.0.0'
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          # Cache keyed on the android project's wrapper properties.
-          cache-read-only: false
 
       - name: Verify the datasets reproduce from the committed pages
         run: |
           node tools/verify_qiershi.js
-          # Rebuild every generated artefact and fail if it differs from what is committed.
           rm -rf data/extracted app/src/main/assets
           node tools/extract_data.js
           node tools/extract_qiershi.js
