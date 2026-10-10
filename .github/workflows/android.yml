@@ -60,6 +60,32 @@ jobs:
           node tools/verify_qiershi.js
           git diff --exit-code -- data/extracted app/src/main/assets
 
+      # android/data/sources holds copies of the pages published at v2.20/. They are kept separate
+      # so the build does not depend on those filenames, which means nothing would notice if a
+      # published page were edited and the copy went stale. Compare the committed blobs (not the
+      # working tree, whose line endings depend on core.autocrlf) and allow only the known trailing
+      # newline, which is one byte in each pair.
+      - name: Check the copied source pages against v2.20
+        run: |
+          check() {
+            local committed="$1" published="$2"
+            if ! git cat-file -e "HEAD:$published" 2>/dev/null; then
+              echo "::warning::$published is gone; cannot cross-check $committed"
+              return 0
+            fi
+            local committed_size published_size
+            committed_size=$(git cat-file blob "HEAD:$committed" | wc -c)
+            published_size=$(git cat-file blob "HEAD:$published" | wc -c)
+            if git cat-file blob "HEAD:$published" | head -c "$committed_size" | cmp -s - <(git cat-file blob "HEAD:$committed"); then
+              echo "OK: $committed still matches $published ($committed_size of $published_size bytes)"
+            else
+              echo "::error file=$committed::$published changed beyond a trailing newline; regenerate the datasets from it"
+              return 1
+            fi
+          }
+          check android/data/sources/qiershi_traditional_v2.20.html v2.20/傳統風格.html
+          check android/data/sources/qiershi_modern_v2.20.html v2.20/現代風格.html
+
       - name: Unit tests
         run: chmod +x gradlew && ./gradlew --no-daemon testDebugUnitTest
 

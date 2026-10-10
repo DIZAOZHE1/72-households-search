@@ -58,18 +58,23 @@ data/sources/*.html --extract_*--> data/extracted/*.json --build_asset--> app/sr
 
 需要 JDK 17–21（Gradle 8.14.3 无法在 JDK 25 上运行脚本编译器）与 Android SDK（platform-tools、platforms;android-36、build-tools;36.0.0）。
 
+**任意平台**（推荐，Linux / macOS / Windows 通用；数据由构建自动生成，无需预置任何东西）：
+
+```bash
+cd android
+chmod +x gradlew      # 仓库未提交 gradlew 的执行位，Linux / macOS 上首次需要
+./gradlew assembleDebug testDebugUnitTest
+```
+
+Windows 上还有个便利脚本，会自动探测 JDK / SDK 并把 APK 复制到仓库根的 `release-dist\`：
+
 ```powershell
-# 自动探测 JAVA_HOME / ANDROID_HOME，产出 APK 到仓库根的 release-dist\
 .\android\tools\build.ps1 assembleDebug testDebugUnitTest
 ```
 
-或使用 wrapper（首次需联网下载发行包）：
-
-```bash
-cd android && ./gradlew assembleDebug
-```
-
 技术栈：Kotlin 2.2.20、Jetpack Compose（BOM 2025.09.00）、Material 3、AGP 8.13.0、Gradle 8.14.3、compileSdk 36 / minSdk 24。
+
+CI（工作流 `Android`）会对每次改动 `android/` 的推送与 PR 执行同样的三步：校验数据可复现、跑单测、构建 APK。
 
 ### 关于 `app/build.gradle.kts` 的注意事项
 
