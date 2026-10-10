@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">剧集查询</string>
+    <string name="app_full_name">七十二家房客 · 外来媳妇本地郎</string>
+
+    <string name="site_traditional">传统</string>
+    <string name="site_modern">现代</string>
+    <string name="site_wailai">外来</string>
+
+    <!-- 剧集查询 -->
+    <string name="pick_random">🎲 随便看一集</string>
+    <string name="pick_today">📅 今日推荐</string>
+    <string name="pick_today_title">📅 今日推荐 · %1$s</string>
+    <string name="show_more">显示更多（还有 %1$d 个）</string>
+    <string name="filter_main_only">★ 仅看主线</string>
+    <string name="filter_only_want">☆ 只看想看</string>
+    <string name="filter_hide_seen">✓ 隐藏已看</string>
+    <string name="empty_title">未找到相关剧集</string>
+    <string name="empty_body">试试其他关键词，或取消筛选条件</string>
+
+    <!-- 追剧进度 -->
+    <string name="progress_title">我追到哪了：</string>
+    <string name="progress_not_started">还没开始</string>
+    <string name="progress_hint">点卡片右下角 ✓ 标记看过</string>
+    <string name="progress_frontier">第%1$d季 · 已看 %2$d/%3$d 集</string>
+    <string name="progress_total">全剧 %1$d/%2$d 集</string>
+    <string name="progress_want"> · ★想看 %1$d</string>
+
+    <!-- 通用 -->
+    <string name="loading">正在载入剧集数据…</string>
+    <string name="load_failed">剧集数据载入失败</string>
+    <string name="retry">重试</string>
+    <string name="clear">清除</string>
+</resources>
