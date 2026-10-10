@@ -24,7 +24,7 @@ Search and rediscover episodes, storylines, characters, and memorable moments fr
 
 - 第 1–19 季 · Seasons 1–19
 - 1,552 个故事主线 · 1,552 Storylines
-- 33 位经典角色 · 33 Characters
+- 34 位经典角色 · 34 Characters
 
 ---
 
@@ -55,6 +55,57 @@ Search by season, episode, title, plot, character, or keyword, with support for 
 - ⭐ 每日推荐 · Daily Recommendations
 - 📋 想看 / 已看 · Watch Tracking
 - 📱 响应式布局 · Responsive Design
+
+---
+
+## 📱 Android 客户端 · Android App
+
+除了网页版，本项目还提供**原生 Android 应用**：一个应用、三个站点、两部剧，**完全离线、不申请网络权限**。
+
+Besides the web pages, this project ships a native Android app: three sites in one app, fully offline, requesting no network permission.
+
+| 底部导航 | 剧集 | 数据 | 主题 |
+| --- | --- | --- | --- |
+| 传统 | 《七十二家房客》 | 1552 个故事 / 19 季 | 岭南传统：青砖灰瓦 + 旧木框 + 满洲窗四色 |
+| 现代 | 《七十二家房客》（同一份数据） | 同上 | 现代简洁：白底圆角 + 极轻投影 + 青绿强调 |
+| 外来 | 《外来媳妇本地郎》 | 2573 个故事 / 14 部 | 朱红 / 描金 / 宣纸 |
+
+三个站点各自独立的封面、配色、排版与搜索状态，切换站点不会互相污染。
+
+- **剧集查询** —— 标题 → 梗概 → 角色三级排序搜索，纯数字按集数区间定位，季与主题标签，★仅看主线 / ☆只看想看 / ✓隐藏已看
+- **主线剧情** —— 16 条故事线、104 个节点，节点可展开相关剧集
+- **角色查询** —— 34 位角色分 5 个阵营，含别称、人物志与出场数，可按季筛选
+- **相似抽取** —— 多选角色 + 主题 + 多关键词，随机抽取 1/3/5/10 集
+- **追剧进度** —— ☆想看 / ✓看过 本地持久化，顶部显示「追到第几季 · 已看 x/y 集」
+- **🎲 随便看一集 / 📅 今日推荐** —— 今日推荐按日期哈希，同日同推荐并跳过已看
+- **🖼 分享卡片** —— 1080×1520 海报，可保存到相册或系统分享
+- **深色模式** —— 三套主题各有夜间配色
+
+### 下载 · Download
+
+前往 [Releases](https://github.com/DIZAOZHE1/72-households-search/releases) 下载 `qiershi-android-*.apk`。
+
+> ⚠️ **这是独立的原生版，不是网页版的升级包。** 它的包名是 `com.jordan.wailaixifu.debug`，与 `chaju-*.apk`（网页封装版，包名 `com.w2a.i4gy`）**并存**安装，可放心试用后单独卸载。当前为 debug 签名测试版，Android 7.0（API 24）及以上。
+
+### 自行构建 · Build
+
+源码与完整说明见 [`android/`](android/README.md)。数据由仓库内的原始网页自动生成，全新克隆无需任何额外步骤：
+
+```bash
+cd android && ./gradlew assembleDebug
+```
+
+技术栈：Kotlin 2.2.20、Jetpack Compose（BOM 2025.09.00）、Material 3、AGP 8.13.0、Gradle 8.14.3、compileSdk 36 / minSdk 24。CI（工作流 `Android`）会在每次改动 `android/` 时重建全部数据并比对，确保应用与仓库内容严格对应。
+
+### 数据管线 · Data pipeline
+
+源页面逐字存入 `android/data/sources/`，构建链路全自动：
+
+```
+data/sources/*.html --extract_*--> data/extracted/*.json --build_asset--> app/src/main/assets/*
+```
+
+`android/data/extracted/provenance.json` 记录每份源页面的 SHA256 与抽取条数，`android/tools/verify_qiershi.js` 用独立实现交叉校验抽取结果。
 
 ---
 
