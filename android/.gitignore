@@ -1,0 +1,18 @@
+# Gradle / Android
+.gradle/
+.kotlin/
+build/
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# Machine-specific SDK location
+local.properties
+
+# OS noise
+.DS_Store
+Thumbs.db

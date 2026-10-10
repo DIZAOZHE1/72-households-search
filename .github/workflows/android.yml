@@ -1,0 +1,81 @@
+name: Android
+
+on:
+  push:
+    branches: [main]
+    paths: ['android/**', '.github/workflows/android.yml']
+    tags: ['android-v*']
+  pull_request:
+    paths: ['android/**', '.github/workflows/android.yml']
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Assemble and test
+    runs-on: ubuntu-latest
+    # Attaching the APK to a release needs write access on contents; the default token is read-only.
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      # The runner image's SDK layout changes between image releases, and its preinstalled API level
+      # may not be the one this project compiles against. Fetching the command-line tools explicitly
+      # makes the build independent of all of that, at the cost of one ~130 MB download.
+      - name: Install the Android SDK packages
+        run: |
+          CMDLINE_VERSION=13114758
+          SDK_ROOT="$RUNNER_TEMP/android-sdk"
+          mkdir -p "$SDK_ROOT/cmdline-tools"
+          curl -fsSL -o "$RUNNER_TEMP/cmdline-tools.zip" \
+            "https://dl.google.com/android/repository/commandlinetools-linux-${CMDLINE_VERSION}_latest.zip"
+          unzip -q "$RUNNER_TEMP/cmdline-tools.zip" -d "$SDK_ROOT/cmdline-tools"
+          mv "$SDK_ROOT/cmdline-tools/cmdline-tools" "$SDK_ROOT/cmdline-tools/latest"
+          echo "ANDROID_HOME=$SDK_ROOT" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$SDK_ROOT" >> "$GITHUB_ENV"
+          echo "$SDK_ROOT/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          yes | "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
+          "$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" \
+            --install 'platform-tools' 'platforms;android-36' 'build-tools;36.0.0'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Verify the datasets reproduce from the committed pages
+        run: |
+          node tools/verify_qiershi.js
+          rm -rf data/extracted app/src/main/assets
+          node tools/extract_data.js
+          node tools/extract_qiershi.js
+          node tools/build_asset.js
+          node tools/verify_qiershi.js
+          git diff --exit-code -- data/extracted app/src/main/assets
+
+      - name: Unit tests
+        run: chmod +x gradlew && ./gradlew --no-daemon testDebugUnitTest
+
+      - name: Assemble debug APK
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      - name: Attach APK to the release
+        if: startsWith(github.ref, 'refs/tags/android-v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: android/app/build/outputs/apk/debug/app-debug.apk
+          generate_release_notes: true

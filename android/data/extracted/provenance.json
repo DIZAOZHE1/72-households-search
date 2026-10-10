@@ -1,0 +1,19 @@
+{
+  "qiershi": {
+    "source": "qiershi_traditional_v2.20.html",
+    "sha256": "dce993e957b90be07f3096e2631dc225d6fdb4056c0574edfda1069f25c5ccff",
+    "storyCards": 1552,
+    "episodeSpan": 2314,
+    "seasons": 19,
+    "characters": 34,
+    "tags": 12,
+    "storylines": 16
+  },
+  "wailai": {
+    "source": "wailai_episodes.html",
+    "sha256": "78e5d43d991f323489cc0d3fabae6a7212c75fa75696ae96772f397adab581ab",
+    "records": 2573,
+    "sections": 14,
+    "episodeSpan": 4647
+  }
+}

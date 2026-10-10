@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vermilion">#FFA92D22</color>
+    <color name="gold">#FFC79A45</color>
+    <color name="ink">#FF24160F</color>
+    <color name="paper">#FFF5EBD5</color>
+    <color name="paper2">#FFE9DAB9</color>
+    <color name="cream">#FFFFFDF7</color>
+    <color name="jade">#FF527A68</color>
+    <color name="dust">#FF806C55</color>
+    <color name="border">#FFD5B986</color>
+    <color name="banner_top">#FF21130C</color>
+    <color name="banner_mid">#FF452312</color>
+    <color name="banner_text">#FFF7EEDB</color>
+    <color name="banner_sub">#FFDCCBA8</color>
+</resources>
